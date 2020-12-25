@@ -23,9 +23,14 @@ class deviceController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function create(Request $req)
     {
         //
+        $device = new Device();
+        $device->name=$req->name;
+        $device->price=$req->price;
+        $result = $device->save();
+        return response(['message'=>$result ? "Created Data":"Some thing want wrong"],201);
     }
 
     /**

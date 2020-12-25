@@ -20,3 +20,4 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 });
 
 Route::get("list",[deviceController::class,'index']);
+Route::post("deviceCreate",[deviceController::class,'create']);
