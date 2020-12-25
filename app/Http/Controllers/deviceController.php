@@ -73,9 +73,14 @@ class deviceController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $req)
     {
         //
+        $device= Device::find((int)$req->id);
+        $device->name=$req->name;
+        $device->price=$req->price;
+        $result = $device->save();
+        return response(['message' => $result ? "updated Data" : "Some thing want wrongme" ], 200);
     }
 
     /**
