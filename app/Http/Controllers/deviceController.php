@@ -92,6 +92,10 @@ class deviceController extends Controller
     public function destroy($id)
     {
         //
+        $device = Device::find($id);
+        $result = $device->delete();
+        return response(['message'=> $result ? "Deleted record" : "Some thing want wrong"],200);
+
     }
 
     public function search($find)
