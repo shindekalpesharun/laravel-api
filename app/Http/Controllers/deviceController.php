@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use Validator;
 use Illuminate\Http\Request;
 use App\Models\Device;
 
@@ -25,7 +26,15 @@ class deviceController extends Controller
      */
     public function create(Request $req)
     {
-        //
+        $rules = array("name"=>"required|min:2|max:20","price"=>"required");
+        // $validator = Validator::make(
+            // array('name' => 'required'),
+            // // array('price' => array('required', 'min:4'))
+            // array('price'=>'required'),
+        // );
+        $validator = Validator::make($req->all(),$rules);
+        if ($validator->fails()) return $validator->errors();
+
         $device = new Device();
         $device->name=$req->name;
         $device->price=$req->price;
