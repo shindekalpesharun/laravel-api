@@ -93,4 +93,9 @@ class deviceController extends Controller
     {
         //
     }
+
+    public function search($find)
+    {
+        return Device::where("name","like","%".$find."%")->get();
+    }
 }
