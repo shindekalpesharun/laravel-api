@@ -4,9 +4,13 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\SoftDeletes;
 
 class Device extends Model
 {
+    use SoftDeletes;
+    
     protected $table = "Device";
+    protected $dates=['deleted_at'];  
     use HasFactory;
 }

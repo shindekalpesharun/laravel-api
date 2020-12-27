@@ -24,6 +24,7 @@ use App\Http\Controllers\FileController;
 Route::group(['middleware' => 'auth:sanctum'], function(){
     Route::get("list",[deviceController::class,'index']);
     Route::post("deviceCreate",[deviceController::class,'create']);
+    Route::post("deviceDelete",[deviceController::class,'delete']);
     Route::put("deviceUpdate",[deviceController::class,'update']);
     Route::get("search/{find}",[deviceController::class,'search']);
     Route::delete("deviceDelete/{id}",[deviceController::class,'destroy']);

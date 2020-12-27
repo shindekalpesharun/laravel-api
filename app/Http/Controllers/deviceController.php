@@ -111,4 +111,10 @@ class deviceController extends Controller
     {
         return Device::where("name","like","%".$find."%")->get();
     }
+
+    public function delete(Request $request)
+    {
+        $result = Device::find($request->id)->delete();
+        return response(["Result"=>$result ? "Deleted Data": "Error"],200);
+    }
 }
